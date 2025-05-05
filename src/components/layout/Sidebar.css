@@ -1,0 +1,79 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  z-index: 1000;
+  background-color: #1f2937;
+  color: white;
+  padding: 1rem;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.2s ease;
+}
+
+/* Título */
+.sidebar-title {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Lista de navegación */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 1rem;
+}
+
+.sidebar a {
+  color: #d1d5db;
+  text-decoration: none;
+  padding: 0.5rem;
+  display: block;
+  border-radius: 5px;
+}
+
+.sidebar a.active,
+.sidebar a:hover {
+  background-color: #374151;
+  color: white;
+}
+
+/* Botón ☰ solo visible en móviles */
+.toggle-btn {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1100;
+  background: #1f2937;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  display: none;
+}
+
+/* SOLO ocultar sidebar en pantallas pequeñas */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .toggle-btn {
+    display: block;
+  }
+
+  /* Ocultar el botón si el sidebar está abierto */
+  .sidebar.open ~ .toggle-btn {
+    display: none;
+  }
+}

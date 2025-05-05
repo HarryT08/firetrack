@@ -1,0 +1,6 @@
+/* Asegura que el body y html ocupen toda la pantalla */
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}  

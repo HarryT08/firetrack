@@ -1,0 +1,49 @@
+.app-layout {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Sidebar fijo con ancho conocido */
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #1f2937;
+  color: white;
+  padding: 1rem;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* Área del contenido principal */
+.main-content {
+  margin-left: 220px; /* igual al ancho del sidebar */
+  flex-grow: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+/* En pantallas grandes, deja espacio al lado del sidebar fijo */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    width: 220px;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0; /* sin margen si el sidebar está oculto */
+    padding-top: 4.5rem;
+  }
+}
