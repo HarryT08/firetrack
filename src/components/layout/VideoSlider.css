@@ -2,17 +2,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 0;
   width: 100%;
-  padding: 2rem 1rem;
-}
+  height: auto;
+  box-sizing: border-box;
+} 
 
 .slider-container {
   position: relative;
   width: 100%;
-  max-width: 900px;
+  max-width: 800px;
   aspect-ratio: 16 / 9;
   background-color: #f3f4f6;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -28,7 +31,7 @@ iframe {
   width: 100%;
   height: 100%;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .nav-button {
@@ -60,8 +63,10 @@ iframe {
 }
 
 .video-indicators {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   text-align: center;
+  z-index: 5;
+  position: relative;
 }
 
 .indicator-dot {
@@ -95,4 +100,25 @@ iframe {
 
 .video-url a:hover {
   background-color: #2563eb;
+}
+
+@media (max-width: 768px) {
+  .slider-container {
+    max-width: 100%;
+    aspect-ratio: 4 / 3; /* ✅ más alto en móvil */
+  }
+
+  .nav-button {
+    font-size: 1.5rem;
+    padding: 0.3rem 0.7rem;
+  }
+
+  .video-url a {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  .indicator-dot {
+    font-size: 1.2rem;
+  }
 }

@@ -1,10 +1,16 @@
-.app-layout {
-  display: flex;
-  height: 100vh;
-  width: 100%;
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
-/* Sidebar fijo con ancho conocido */
+.app-layout {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
 .sidebar {
   width: 220px;
   height: 100vh;
@@ -21,7 +27,6 @@
 .main-content {
   margin-left: 220px;
   flex-grow: 1;
-  padding: 2rem;
   overflow-y: auto;
   box-sizing: border-box;
   min-height: 100vh;
@@ -30,7 +35,6 @@
   z-index: 1;
 }
 
-/* 🔥 Fondo animado como antes */
 .main-content::before {
   content: "";
   position: absolute;
@@ -52,14 +56,12 @@
   border-radius: inherit;
 }
 
-/* 🔁 Fuego animado */
 @keyframes fireBackground {
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* 🔸 Brasas flotando */
 .main-content::after {
   content: "";
   position: absolute;
@@ -79,7 +81,6 @@
   mix-blend-mode: screen;
 }
 
-/* 🎇 Movimiento sutil de brasas */
 @keyframes emberDrift {
   0% {
     background-position: 0 100vh, 50px 110vh, 100px 120vh;
@@ -89,7 +90,6 @@
   }
 }
 
-/* En pantallas grandes, deja espacio al lado del sidebar fijo */
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
@@ -103,7 +103,7 @@
   }
 
   .main-content {
-    margin-left: 0; /* sin margen si el sidebar está oculto */
-    padding-top: 4.5rem;
+    margin-left: 0;
+    padding-top: 2rem;
   }
 }
