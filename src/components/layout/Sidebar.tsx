@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
 
 const Sidebar = () => {
@@ -16,12 +16,13 @@ const Sidebar = () => {
     { to: '/galeria', label: 'Galería' }
   ];
 
+  // Cerrar al hacer clic fuera
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (e: MouseEvent) => {
       if (
         isOpen &&
         sidebarRef.current &&
-        !sidebarRef.current.contains(event.target as Node)
+        !sidebarRef.current.contains(e.target as Node)
       ) {
         setIsOpen(false);
       }
@@ -33,9 +34,16 @@ const Sidebar = () => {
 
   return (
     <>
+      {/* Solo mostrar botón si sidebar está cerrado */}
+      {!isOpen && (
+        <button className="toggle-btn" onClick={() => setIsOpen(true)}>
+          ☰
+        </button>
+      )}
+
       <aside
-        ref={sidebarRef}
         className={`sidebar ${isOpen ? 'open' : ''}`}
+        ref={sidebarRef}
       >
         <h2 className="sidebar-title">FireTrack</h2>
         <nav>
@@ -44,8 +52,10 @@ const Sidebar = () => {
               <li key={to}>
                 <NavLink
                   to={to}
+                  className={({ isActive }: { isActive: boolean }) =>
+                    isActive ? 'active' : ''
+                  }
                   onClick={() => setIsOpen(false)}
-                  className={({ isActive }) => (isActive ? 'active' : '')}
                 >
                   {label}
                 </NavLink>
@@ -54,11 +64,6 @@ const Sidebar = () => {
           </ul>
         </nav>
       </aside>
-
-      {/* Coloca el botón DESPUÉS del sidebar */}
-      <button className="toggle-btn" onClick={() => setIsOpen(true)}>
-        ☰
-      </button>
     </>
   );
 };
