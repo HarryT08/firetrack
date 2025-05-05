@@ -18,15 +18,75 @@
   z-index: 1000;
 }
 
-/* Área del contenido principal */
 .main-content {
-  margin-left: 220px; /* igual al ancho del sidebar */
+  margin-left: 220px;
   flex-grow: 1;
   padding: 2rem;
   overflow-y: auto;
   box-sizing: border-box;
   min-height: 100vh;
-  background-color: #f9fafb;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+/* 🔥 Fondo animado como antes */
+.main-content::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: linear-gradient(
+    -45deg,
+    #7f1d1d,
+    #b91c1c,
+    #f97316,
+    #facc15
+  );
+  background-size: 400% 400%;
+  animation: fireBackground 15s ease infinite;
+  opacity: 0.85;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* 🔁 Fuego animado */
+@keyframes fireBackground {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 🔸 Brasas flotando */
+.main-content::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(251, 191, 36, 0.4) 5.5px, transparent 1.5px),
+    radial-gradient(circle, rgba(248, 113, 113, 0.3) 7px, transparent 2px),
+    radial-gradient(circle, rgba(252, 211, 77, 0.2) 5.2px, transparent 1.2px);
+  
+  background-size: 120px 240px, 160px 320px, 200px 400px;
+  background-position: 0 0, 50px 100px, 100px 200px;
+  animation: emberDrift 60s linear infinite;
+  mix-blend-mode: screen;
+}
+
+/* 🎇 Movimiento sutil de brasas */
+@keyframes emberDrift {
+  0% {
+    background-position: 0 100vh, 50px 110vh, 100px 120vh;
+  }
+  100% {
+    background-position: 0 -200vh, 50px -220vh, 100px -240vh;
+  }
 }
 
 /* En pantallas grandes, deja espacio al lado del sidebar fijo */

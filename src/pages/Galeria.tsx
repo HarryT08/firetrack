@@ -4,7 +4,7 @@ import './Galeria.css';
 const Galeria = () => {
   return (
     <div className="galeria-page">
-      <h1>Galería de Videos</h1>
+      <h1>Galería</h1>
       <VideoSlider />
     </div>
   );
