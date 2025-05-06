@@ -3,8 +3,8 @@ import './Galeria.css';
 
 const Galeria = () => {
   return (
-    <div className="galeria-page">
-      <h1 className="galeria-title">Galería</h1>
+    <div className="page">
+      <h1 className="title-background">Galería</h1>
       <div className="galeria-video-wrapper">
         <VideoSlider />
       </div>

@@ -1,28 +1,53 @@
 .sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 220px;
   height: 100vh;
-  z-index: 1000;
-  background-color: #1f2937;
+  position: fixed;
+  left: 0;
+  top: 0;
   color: white;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   box-sizing: border-box;
-  transition: transform 0.3s ease, box-shadow 0.2s ease;
+  z-index: 1000;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/b8/Deerfire.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: brightness(0.8);
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Oscurecer fondo para mayor contraste */
+.sidebar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(15, 23, 42, 0.6);
+  z-index: 0;
+}
+
+.sidebar * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Título */
 .sidebar-title {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
   margin-bottom: 2rem;
   text-align: center;
+  color: #fcd34d;
+  letter-spacing: 1px;
 }
 
 /* Lista de navegación */
 .sidebar ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .sidebar li {
@@ -30,17 +55,19 @@
 }
 
 .sidebar a {
-  color: #d1d5db;
+  color: #e5e7eb;
   text-decoration: none;
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
   display: block;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .sidebar a.active,
 .sidebar a:hover {
-  background-color: #374151;
-  color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fef3c7;
 }
 
 /* Botón ☰ solo visible en móviles */
@@ -58,10 +85,10 @@
   display: none;
 }
 
-/* SOLO ocultar sidebar en pantallas pequeñas */
 @media (max-width: 768px) {
   .sidebar {
     transform: translateX(-100%);
+    transition: transform 0.3s ease;
   }
 
   .sidebar.open {
@@ -72,7 +99,6 @@
     display: block;
   }
 
-  /* Ocultar el botón si el sidebar está abierto */
   .sidebar.open ~ .toggle-btn {
     display: none;
   }

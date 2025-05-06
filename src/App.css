@@ -1,27 +1,16 @@
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 .app-layout {
   display: flex;
   width: 100%;
   align-items: stretch;
-}
-
-.sidebar {
-  width: 220px;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
-  background-color: #1f2937;
-  color: white;
-  padding: 1rem;
-  box-sizing: border-box;
-  z-index: 1000;
 }
 
 .main-content {
@@ -38,17 +27,12 @@ body, html {
 .main-content::before {
   content: "";
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   z-index: -2;
-  background: linear-gradient(
-    -45deg,
-    #7f1d1d,
-    #b91c1c,
-    #f97316,
-    #facc15
-  );
+  background: linear-gradient(-45deg, #7f1d1d, #b91c1c, #f97316, #facc15);
   background-size: 400% 400%;
   animation: fireBackground 15s ease infinite;
   opacity: 0.85;
@@ -57,24 +41,34 @@ body, html {
 }
 
 @keyframes fireBackground {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .main-content::after {
   content: "";
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  background-image:
-    radial-gradient(circle, rgba(251, 191, 36, 0.4) 5.5px, transparent 1.5px),
+  background-image: radial-gradient(
+      circle,
+      rgba(251, 191, 36, 0.4) 5.5px,
+      transparent 1.5px
+    ),
     radial-gradient(circle, rgba(248, 113, 113, 0.3) 7px, transparent 2px),
     radial-gradient(circle, rgba(252, 211, 77, 0.2) 5.2px, transparent 1.2px);
-  
+
   background-size: 120px 240px, 160px 320px, 200px 400px;
   background-position: 0 0, 50px 100px, 100px 200px;
   animation: emberDrift 60s linear infinite;
@@ -106,4 +100,50 @@ body, html {
     margin-left: 0;
     padding-top: 2rem;
   }
+}
+
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.title-background {
+  margin: 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  padding: 2rem 1rem;
+  font-weight: bold;
+  text-align: center;
+
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/b8/Deerfire.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 3rem;
+}
+
+.title-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* oscurece imagen */
+  z-index: -1;
 }
