@@ -1,7 +1,12 @@
+import ColombiaFiresMap from "../components/common/ColombiaFiresMap"
 
 const Alertas = () => {
   return (
-    <div>Alertas</div>
+    <div className="page">
+      <h1 className="title-background">Alertas</h1>
+
+      <ColombiaFiresMap></ColombiaFiresMap>
+    </div>
   )
 }
 

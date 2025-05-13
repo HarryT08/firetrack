@@ -1,0 +1,20 @@
+.mapbox-container {
+  height: 600px;
+  width: 100%;
+  border-radius: 12px;
+  margin: 2rem auto;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.mapboxgl-popup.popup-incendio .mapboxgl-popup-content {
+  background: #fff;
+  color: #111;
+  font-size: 14px;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.mapboxgl-popup.popup-incendio .mapboxgl-popup-tip {
+  border-top-color: #fff;
+}
