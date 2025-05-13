@@ -66,7 +66,7 @@ const Inicio = () => {
         </div>
 
         <h2 className="title">Según su propagación</h2>
-        <div className="feature-grid">
+        <div className="feature-grid padding-bottom">
           {propagationCards.map((card, index) => (
             <CardFlip
               key={index}

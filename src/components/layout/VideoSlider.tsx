@@ -4,7 +4,7 @@ import './VideoSlider.css';
 const videoUrls = [
   'https://youtu.be/3KMv8casJuY?si=vOWMKxqNfjsGlt0h',
   'https://youtube.com/watch?v=VFoR-gw5Z-8&feature=shared',
-  'https://www.youtube.com/watch?v=EVmvJdtZUN0'
+  'https://www.youtube.com/watch?v=nGVPLsQbm4A'
 ];
 
 const youtubeIds = videoUrls.map(getYoutubeId).filter(Boolean) as string[];

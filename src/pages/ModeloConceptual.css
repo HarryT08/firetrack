@@ -1,0 +1,167 @@
+.modelo-conceptual {
+  padding: 2rem 2rem 2rem 3rem; /* agrega padding izquierdo mayor */
+  font-family: "Segoe UI", sans-serif;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.fila {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: nowrap;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.caja {
+  border-radius: 12px;
+  border: 2px solid #000;
+  padding: 1.2rem 1.5rem;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.caja:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px 5px rgba(255, 85, 0, 0.5);
+}
+
+.caja:hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 102, 0, 0.2), transparent 70%);
+  pointer-events: none;
+  border-radius: 12px;
+  animation: quemar 1.2s infinite alternate ease-in-out;
+}
+
+@keyframes quemar {
+  0% { box-shadow: inset 0 0 10px rgba(255, 85, 0, 0.5); }
+  100% { box-shadow: inset 0 0 20px rgba(255, 0, 0, 0.4); }
+}
+
+/* Tamaños */
+.izquierda {
+  width: 260px;
+  height: 120px; /* Altura fija igual para todas */
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
+
+.derecha {
+  flex: 1;
+  min-width: 0; /* importante para que no desborde */
+  max-width: 700px;
+}
+
+.derecha h4 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #fff;
+  display: inline-block;
+}
+
+.derecha p,
+.derecha ul {
+  font-size: 1.1rem;
+  font-weight: normal;
+  margin-top: 0.4rem;
+}
+
+.derecha ul {
+  padding-left: 1.2rem;
+}
+
+/* Línea conectora */
+.linea {
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.linea::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  border-top: 3px solid #fff;
+  border-right: 3px solid #fff;
+  border-radius: 0 20px 0 0;
+  transform: translateY(0); /* centrado base */
+}
+
+/* Colores fuego */
+.color1 { background: #b91c1c; color: #fff; }
+.color2 { background: #fef2f2; color: #111; }
+
+.color3 { background: #78350f; color: #fff; }
+.color4 { background: #fff7ed; color: #111; }
+
+.color5 { background: #9a3412; color: #fff; }
+.color6 { background: #fef3c7; color: #111; }
+
+.color7 { background: #c2410c; color: #fff; }
+.color8 { background: #ffedd5; color: #111; }
+
+.color9 { background: #a16207; color: #fff; }
+.color10 { background: #fef9c3; color: #111; }
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .modelo-conceptual {
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .fila {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .caja {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 12px;
+    padding: 1rem;
+    overflow-wrap: break-word;
+  }
+
+  .izquierda,
+  .derecha {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .derecha h4 {
+    font-size: 1.2rem;
+  }
+
+  .derecha p,
+  .derecha ul {
+    font-size: 1rem;
+  }
+
+  .derecha ul {
+    padding-left: 1rem;
+  }
+
+  .linea {
+    display: none;
+  }
+}

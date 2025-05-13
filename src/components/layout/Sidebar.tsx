@@ -9,9 +9,8 @@ const Sidebar = () => {
   const links = [
     { to: '/', label: 'Inicio' },
     { to: '/alertas', label: 'Alertas Activas' },
-    { to: '/causas', label: 'Causas' },
-    { to: '/consecuencias', label: 'Consecuencias' },
-    { to: '/actuar', label: '¿Cómo Actuar?' },
+    { to: '/modelo_conceptual', label: 'Modelo Conceptual' },
+    { to: '/actuar', label: 'Como Actuar' },
     { to: '/datos-historicos', label: 'Datos Históricos' },
     { to: '/galeria', label: 'Galería' }
   ];

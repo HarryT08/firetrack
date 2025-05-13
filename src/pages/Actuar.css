@@ -1,0 +1,113 @@
+.tabla-actuar {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: black;
+  font-size: 1.2rem;
+}
+
+.fila {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.etiqueta {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  background: #1f2937;
+  color: white;
+  font-weight: bold;
+  padding: 1rem;
+  font-size: 1.6rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 60px;
+}
+
+.contenedor-items {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 1px;
+  background: #f9fafb;
+  justify-content: space-around;
+}
+
+.item {
+  flex: 1 1 220px;
+  min-height: 120px;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  word-wrap: break-word;
+  border-right: 1px solid #ccc;
+}
+
+.item:last-child {
+  border-right: none;
+}
+
+.item .icono {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Colores por fase */
+.fase-antes .item {
+  background-color: #fdba74; /* naranja fuego claro */
+}
+
+.fase-durante .item {
+  background-color: #dc2626; /* rojo intenso */
+  color: white;
+}
+
+.fase-despues .item {
+  background-color: #16a34a; /* verde esperanza */
+  color: white;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .tabla-actuar {
+        padding: 1rem 0;
+        font-size: 1rem;
+    }
+
+  .fila {
+    flex-direction: column;
+  }
+
+  .etiqueta {
+    writing-mode: horizontal-tb;
+    font-size: 1.4rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .contenedor-items {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .item {
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+    flex: 1 1 auto;
+  }
+
+  .item:last-child {
+    border-bottom: none;
+  }
+}

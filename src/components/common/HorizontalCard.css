@@ -1,0 +1,135 @@
+.horizontal-card {
+  display: flex;
+  flex-direction: row;
+  background: #fff5f5;
+  border: 2px solid #7f1d1d;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.card-image {
+  width: 40%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-content p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-content {
+  padding: 1rem;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.card-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #991b1b;
+  line-height: 1.3;
+  max-height: 3.2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* máximo 2 líneas */
+  line-clamp: 2; /* máximo 2 líneas */
+  -webkit-box-orient: vertical;
+}
+
+.card-content {
+  padding: 1rem;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-height: 100%; /* agrega esto */
+  overflow: hidden;
+  color: black;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.ver-mas {
+  background: none;
+  color: #b91c1c;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.ver-mas:hover {
+  text-decoration: underline;
+}
+
+/* Responsive grid */
+.horizontal-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 1rem 2rem;
+  max-width: 1300px;
+  margin: auto;
+}
+
+@media (max-width: 1000px) {
+  .horizontal-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .horizontal-card {
+    flex-direction: column;
+    height: auto !important;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .card-content {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .card-content h3{
+    max-height: none;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
+    display: block;
+    word-wrap: break-word;
+  }
+
+  .card-content p {
+    display: block;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: unset;
+    overflow: visible;
+    text-overflow: unset;
+    max-height: none;
+  }
+
+}

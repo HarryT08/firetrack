@@ -84,3 +84,7 @@ a:hover {
   text-align: center;
   font-size: 2rem;
 }
+
+.padding-bottom {
+  padding-bottom: 3rem;
+}

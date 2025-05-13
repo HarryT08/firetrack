@@ -1,0 +1,24 @@
+.horizontal-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 1rem;
+  max-width: 100%;
+  margin: auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .horizontal-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.section-title {
+  font-size: 1.6rem;
+  margin: 2rem 2rem 1rem;
+  color: #991b1b;
+  border-left: 4px solid #991b1b;
+  padding-left: 1rem;
+}
