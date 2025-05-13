@@ -1,6 +1,6 @@
 .tabla-actuar {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: auto;
   padding: 2rem 1rem;
   display: flex;
@@ -77,6 +77,33 @@
 .fase-despues .item {
   background-color: #16a34a; /* verde esperanza */
   color: white;
+}
+
+.footer {
+  background-color: #1f2937;
+  color: #fef9c3;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
+  border-top: 4px solid #991b1b;
+}
+
+.footer h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.footer-link {
+  color: #fcd34d;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #facc15;
+  text-decoration: underline;
 }
 
 /* Responsivo */

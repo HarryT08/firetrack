@@ -2,7 +2,7 @@ import "./Actuar.css";
 
 const fases = [
   {
-    nombre: "ANTES (PREVENCIÓN Y PREPARACIÓN)",
+    nombre: "ANTES PREVENCIÓN Y PREPARACIÓN",
     color: "fase-antes",
     items: [
       { texto: "Detección de riesgos: Identificación de zonas vulnerables.", icono: "📍" },
@@ -13,7 +13,7 @@ const fases = [
     ]
   },
   {
-    nombre: "DURANTE (RESPUESTA)",
+    nombre: "DURANTE RESPUESTA",
     color: "fase-durante",
     items: [
       { texto: "Detección y aviso: Cualquier persona o entidad informa sobre humo o llamas.", icono: "🚨" },
@@ -27,7 +27,7 @@ const fases = [
     ]
   },
   {
-    nombre: "DESPUÉS (EVALUACIÓN Y RECUPERACIÓN)",
+    nombre: "DESPUÉS EVALUACIÓN Y RECUPERACIÓN",
     color: "fase-despues",
     items: [
       { texto: "Investigación: Determinar origen y causa del incendio.", icono: "🔍" },
@@ -58,6 +58,20 @@ const Actuar = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="footer">
+        <h3>
+          Te puede interesar:&nbsp;
+          <a
+            href="https://portal.gestiondelriesgo.gov.co/Documents/Protocolo-Nacional-de-Respuesta-ante-Incendios-Forestales.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-link"
+          >
+            Protocolo nacional de respuesta ante incendios forestales
+          </a>
+        </h3>
       </div>
     </div>
   );
