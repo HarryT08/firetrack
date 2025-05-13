@@ -1,13 +1,18 @@
-import ColombiaFiresMap from "../components/common/ColombiaFiresMap"
+import ColombiaFiresMap from "../components/common/ColombiaFiresMap";
+import BoletinSuscripcion from "../components/common/BoletinSuscripcion";
 
 const Alertas = () => {
   return (
-    <div className="page">
+    <div className="page relative">
       <h1 className="title-background">Alertas</h1>
 
-      <ColombiaFiresMap></ColombiaFiresMap>
-    </div>
-  )
-}
+      {/* Mapa de incendios */}
+      <ColombiaFiresMap />
 
-export default Alertas
+      {/* Boletín flotante o al costado */}
+      <BoletinSuscripcion />
+    </div>
+  );
+};
+
+export default Alertas;

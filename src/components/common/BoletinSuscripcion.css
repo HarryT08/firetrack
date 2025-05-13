@@ -1,0 +1,81 @@
+.boletin-popup {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 300px;
+  padding: 16px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: fadeIn 0.4s ease-out;
+  font-family: Arial, sans-serif;
+}
+
+.boletin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.boletin-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #c53030;
+}
+
+.boletin-close {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #999;
+}
+
+.boletin-close:hover {
+  color: #000;
+}
+
+.boletin-input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.boletin-button {
+  width: 100%;
+  background-color: #e11d48;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.boletin-button:hover {
+  background-color: #c81037;
+}
+
+.boletin-mensaje {
+  font-size: 12px;
+  margin-top: 8px;
+  color: #333;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
