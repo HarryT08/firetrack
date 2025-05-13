@@ -3,6 +3,19 @@ import mapboxgl from "mapbox-gl";
 import Papa from "papaparse";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./ColombiaFiresMap.css";
+import type { Feature, Point } from "geojson";
+
+// Define el tipo exacto de las propiedades de cada punto de incendio
+type IncendioProperties = {
+  fecha: string;
+  hora: string;
+  brillo: string;
+  confianza: string;
+  satelite: string;
+  instrumento: string;
+  frp: string;
+  dia_noche: string;
+};
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN || "";
 
@@ -20,7 +33,7 @@ const ColombiaFiresMap = () => {
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/outdoors-v12",
       center: [-74, 4.5],
-      zoom: 5.5, // Aumentado ligeramente
+      zoom: 5.5,
     });
 
     map.current.addControl(new mapboxgl.NavigationControl(), "top-right");
@@ -30,7 +43,7 @@ const ColombiaFiresMap = () => {
       .then((csv) => {
         const result = Papa.parse(csv, { header: true });
 
-        const features = result.data
+        const features: Feature<Point, IncendioProperties>[] = result.data
           .filter((row: any) => row.latitude && row.longitude)
           .map((row: any) => {
             const lat = parseFloat(row.latitude);
@@ -56,7 +69,7 @@ const ColombiaFiresMap = () => {
               },
             };
           })
-          .filter((f: any) => f !== null);
+          .filter((f): f is Feature<Point, IncendioProperties> => f !== null);
 
         map.current!.on("load", () => {
           map.current!.addSource("incendios", {
@@ -70,7 +83,6 @@ const ColombiaFiresMap = () => {
             clusterRadius: 50,
           });
 
-          // Clusters
           map.current!.addLayer({
             id: "clusters",
             type: "circle",
@@ -84,7 +96,6 @@ const ColombiaFiresMap = () => {
             },
           });
 
-          // Cluster count labels
           map.current!.addLayer({
             id: "cluster-count",
             type: "symbol",
@@ -97,7 +108,6 @@ const ColombiaFiresMap = () => {
             },
           });
 
-          // Unclustered points
           map.current!.addLayer({
             id: "unclustered-point",
             type: "circle",
@@ -111,9 +121,9 @@ const ColombiaFiresMap = () => {
             },
           });
 
-          // Popup on unclustered points
+          // Popup para puntos individuales
           map.current!.on("click", "unclustered-point", (e) => {
-            const props = e.features?.[0].properties;
+            const props = e.features?.[0].properties as IncendioProperties;
             if (!props) return;
 
             new mapboxgl.Popup({ className: "popup-incendio" })
@@ -132,14 +142,13 @@ const ColombiaFiresMap = () => {
               .addTo(map.current!);
           });
 
-          // Expandir cluster al hacer click
+          // Zoom automático al hacer click sobre un cluster
           map.current!.on("click", "clusters", (e) => {
             const feature = e.features?.[0];
             if (!feature) return;
 
             const clusterId = feature.properties?.cluster_id;
-            if (typeof clusterId !== "number") return; // 👈 clave
-
+            if (typeof clusterId !== "number") return;
 
             const source = map.current!.getSource("incendios") as mapboxgl.GeoJSONSource;
 
@@ -148,26 +157,19 @@ const ColombiaFiresMap = () => {
 
               map.current.easeTo({
                 center: (feature.geometry as any).coordinates,
-                zoom,
+                zoom: zoom as number,
               });
             });
-
           });
 
-          map.current!.on("mouseenter", "clusters", () => {
-            map.current!.getCanvas().style.cursor = "pointer";
-          });
-
-          map.current!.on("mouseleave", "clusters", () => {
-            map.current!.getCanvas().style.cursor = "";
-          });
-
-          map.current!.on("mouseenter", "unclustered-point", () => {
-            map.current!.getCanvas().style.cursor = "pointer";
-          });
-
-          map.current!.on("mouseleave", "unclustered-point", () => {
-            map.current!.getCanvas().style.cursor = "";
+          // Cambiar el cursor en hover
+          ["clusters", "unclustered-point"].forEach((layer) => {
+            map.current!.on("mouseenter", layer, () => {
+              map.current!.getCanvas().style.cursor = "pointer";
+            });
+            map.current!.on("mouseleave", layer, () => {
+              map.current!.getCanvas().style.cursor = "";
+            });
           });
         });
       });
